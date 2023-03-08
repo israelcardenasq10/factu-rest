@@ -10,6 +10,9 @@ const config = {
     password: process.env.SQL_PASSWORD as string,
     port: parseInt(<string>process.env.SQL_PORT),
   },
+  sqlite:{
+    storage: process.env.SQLite as string,
+  }
 };
 
 export default config;

@@ -22,12 +22,14 @@
     },
     "dependencies": {
         "@hapi/boom": "^9.1.4",
+        "@types/node-cron": "^3.0.7",
         "cors": "^2.8.5",
         "dotenv-flow": "^3.2.0",
         "express": "^4.17.1",
         "helmet": "^4.6.0",
         "joi": "^17.4.2",
         "morgan": "^1.10.0",
+        "node-cron": "^3.0.2",
         "sequelize": "^6.28.2",
         "tedious": "^14.0.0"
     }

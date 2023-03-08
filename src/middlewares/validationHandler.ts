@@ -8,7 +8,7 @@ import joi, { ValidationError, ValidationResult } from 'joi';
 
 const validate = (data: Object, schema: Object): ValidationError | undefined => {
   const { error }: ValidationResult = joi.object(schema).validate(data, { convert: false });
-  console.log('error', error)
+  
   return error;
 };
 

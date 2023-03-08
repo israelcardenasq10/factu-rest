@@ -6,12 +6,15 @@ export const insertVenta: Handler = async (req, res, next) => {
   const t = await sequelize.transaction();
   try {
     const data = req.body as any ;
+    // console.log('data', data)
     const resp = await Ventas.insertData(data)
     await t.commit();
     res.status(200).send(resp);
   } catch (err: any) {
+    const ad = new String(err)
+    // console.log('ABCAD', ad)
     await t.rollback();
-    next(err);
+    next({message:ad});
   }
 };
 

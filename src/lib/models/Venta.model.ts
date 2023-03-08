@@ -4,8 +4,26 @@ import sequelize from "../database/connectSQL";
 export class Ventas extends Model {
   static DocumentLines: any;
   static Payments: any;
-  
+
   public ruc_emisor!:string;
+  public subtotal_venta!:number;
+  public igv!:number;
+  public total_venta!:number;
+  public icbper_total!:number;
+  public icbper_cant!:number;
+  public fecha_emision!:string;
+  public hora_emision!:string;
+  public tdoc!:string;
+  public sfactu!:string;
+  public nfactu!:string;
+  public tdoc_r!:string;
+  public sfactu_r!:string;
+  public nfactu_r!:string;
+  public tp_doc!:string;
+  public n_ruc!:string;
+  public n_rs!:string;
+  public monto_letras!:string;
+  public id_transac!:number
 }
 
 Ventas.init(
@@ -18,6 +36,7 @@ Ventas.init(
     icbper_total: { type: DataTypes.DECIMAL(18,2)  },
     icbper_cant:{ type: DataTypes.INTEGER  } ,
     total_venta: { type: DataTypes.DECIMAL(18,2)  },
+    monto_letras: { type: DataTypes.STRING(500) },
     pago_cliente: { type: DataTypes.DECIMAL(18,2)  },
     vuelto: { type: DataTypes.DECIMAL(18,2)  },
     moneda: { type: DataTypes.STRING(25) },
@@ -37,6 +56,7 @@ Ventas.init(
     tpo_nc : { type: DataTypes.STRING(2) },
     glosa : { type: DataTypes.STRING(200) },
     anulado : { type: DataTypes.STRING(5) },
+    gentxt : { type: DataTypes.BOOLEAN, defaultValue:0 },
   },
   {
     sequelize,
@@ -58,7 +78,6 @@ export class DocumentLine extends Model {}
     cantidad:{type: DataTypes.INTEGER, },
     venta: { type: DataTypes.DECIMAL(18,2) },
     total : { type: DataTypes.DECIMAL(18,2) },
-    
   },
     {
         sequelize,

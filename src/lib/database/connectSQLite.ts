@@ -1,13 +1,12 @@
 import { Sequelize } from 'sequelize';
 import config from '../../config';
 
-const { database, user, password, server, port } = config.sql;
+const { storage  } = config.sqlite;
 
-const sequelize = new Sequelize(database, user, password, {
-  host: server,
-  port,
-  dialect: 'mssql',
-  // logging: false,
+const sqlite = new Sequelize({
+  dialect: 'sqlite',
+  storage ,
+  logging: false,
   dialectOptions: {
     options: {
       useUTC: false,
@@ -20,14 +19,14 @@ const sequelize = new Sequelize(database, user, password, {
   },
 });
 
-sequelize
+sqlite
   .authenticate()
   // .sync({ force: true })
   .then(() => { 
-    console.log(`Conecting to MSSQL SEQUALIZE ${database}:${server}`);
+    console.log(`Conecting to SQLite SEQUALIZE `);
   })
   .catch((err) => {
     console.error('Unable to connect to the database:', err);
   });
 
-export default sequelize;
+export default sqlite;

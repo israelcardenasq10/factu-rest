@@ -1,8 +1,7 @@
 import VentasLib from '../lib/Ventas.lib';
 
 class Ventas {
-  // private VentasLib = new VentasLib();
-
+  
   static async getList(ruc: string): Promise<object> {
     return await VentasLib.GetRuc(ruc);
   }
@@ -11,7 +10,9 @@ class Ventas {
     return await VentasLib.Insert(data);
   }
     
-
+  static async getListTxt(ruc: string): Promise<object> {
+    return await VentasLib.GetRucTxt(ruc);
+  }
 }
 
 export default Ventas;
